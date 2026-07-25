@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Debashish Parida | Portfolio</title>
+
+<!-- Browser Tab Icon -->
+<link rel="icon" type="image/png" sizes="180x180" href="DP.png">
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#080810;--bg2:#0f0f1a;--bg3:#141428;
+    --blue:#4f8eff;--blue2:#2563eb;
+    --text:#f0f0ff;--muted:#8888aa;--border:rgba(79,142,255,0.15);
+    --ai:#7c3aed;--ai2:rgba(124,58,237,0.15);
+    --web:#0891b2;--web2:rgba(8,145,178,0.15);
+    --data:#059669;--data2:rgba(5,150,105,0.15);
+    --acad:#d97706;--acad2:rgba(217,119,6,0.15);
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 6vw;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,16,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:1rem;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;}
+  .nav-links{display:flex;gap:22px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+
+  section{padding:100px 6vw;}
+  .sec-label{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+  .sec-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:48px;}
+  .sec-title span{color:var(--blue);}
+  .fade-in{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+  .fade-in.visible{opacity:1;transform:none;}
+
+  /* NAME */
+  #top{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px;position:relative;overflow:hidden;}
+  .glow-bg{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(79,142,255,0.11) 0%,transparent 70%);top:-120px;right:-120px;pointer-events:none;}
+  .glow-bg2{position:absolute;width:450px;height:450px;background:radial-gradient(circle,rgba(79,142,255,0.06) 0%,transparent 70%);bottom:0;left:-100px;pointer-events:none;}
+  .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(79,142,255,0.1);border:1px solid var(--border);border-radius:50px;padding:6px 18px;font-size:.76rem;font-weight:600;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;}
+  .tag span{width:7px;height:7px;border-radius:50%;background:var(--blue);display:inline-block;animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+  h1.name{font-size:clamp(3rem,9vw,7.5rem);font-weight:900;line-height:1;letter-spacing:-3px;margin-bottom:14px;}
+  h1.name span{background:linear-gradient(135deg,#fff 30%,var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .title-line{font-size:clamp(.9rem,2vw,1.2rem);font-weight:500;color:var(--muted);margin-bottom:6px;}
+  .title-line strong{color:var(--blue);font-weight:700;}
+  .subtitle-line{font-size:clamp(.78rem,1.5vw,1rem);font-weight:300;color:#6666aa;margin-bottom:32px;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:8px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer;}
+  .btn-primary{background:var(--blue2);color:#fff;box-shadow:0 0 28px rgba(79,142,255,0.3);}
+  .btn-primary:hover{background:var(--blue);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--blue);border:1px solid var(--blue);}
+  .btn-outline:hover{background:rgba(79,142,255,0.1);transform:translateY(-2px);}
+  .meta-row{display:flex;flex-wrap:wrap;gap:22px;margin-top:48px;}
+  .meta-item{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.83rem;}
+
+  /* ABOUT */
+  #about{background:var(--bg2);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .about-text{font-size:1rem;line-height:1.9;color:#c0c0dd;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:26px;text-align:center;}
+  .stat-num{font-size:2.1rem;font-weight:900;color:var(--blue);line-height:1;}
+  .stat-label{font-size:.76rem;color:var(--muted);margin-top:6px;font-weight:500;}
+
+  /* EXPERIENCE */
+  #experience{}
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),transparent);}
+  .tl-item{position:relative;margin-bottom:52px;}
+  .tl-dot{position:absolute;left:-39px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--blue);box-shadow:0 0 14px var(--blue);}
+  .tl-date{font-size:.74rem;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .tl-role{font-size:1.2rem;font-weight:800;margin-bottom:4px;}
+  .tl-company{font-size:.9rem;color:var(--muted);margin-bottom:16px;font-weight:500;}
+  .tl-badge{display:inline-block;background:rgba(79,142,255,0.12);border:1px solid var(--border);border-radius:4px;padding:2px 10px;font-size:.7rem;font-weight:700;color:var(--blue);margin-left:10px;vertical-align:middle;}
+  .tl-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .tl-list li{color:#b0b0cc;font-size:.9rem;line-height:1.65;padding-left:18px;position:relative;}
+  .tl-list li::before{content:'▹';position:absolute;left:0;color:var(--blue);}
+
+  /* AI */
+  #ai{background:var(--bg2);}
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .ai-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
+  .ai-card:hover{transform:translateY(-4px);border-color:rgba(79,142,255,0.45);}
+  .ai-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue2),var(--blue),transparent);}
+  .ai-icon{font-size:1.5rem;margin-bottom:12px;}
+  .ai-title{font-size:.95rem;font-weight:700;margin-bottom:8px;}
+  .ai-desc{font-size:.84rem;color:var(--muted);line-height:1.65;}
+
+  /* PROJECTS */
+  #projects{background:var(--bg);padding:100px 6vw;}
+  .cat-block{margin-bottom:72px;}
+  .cat-block:last-child{margin-bottom:0;}
+  .cat-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+  .cat-icon-wrap{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+  .cat-icon-wrap.ai{background:var(--ai2);border:1px solid rgba(124,58,237,0.3);}
+  .cat-icon-wrap.web{background:var(--web2);border:1px solid rgba(8,145,178,0.3);}
+  .cat-icon-wrap.data{background:var(--data2);border:1px solid rgba(5,150,105,0.3);}
+  .cat-icon-wrap.acad{background:var(--acad2);border:1px solid rgba(217,119,6,0.3);}
+  .cat-name{font-size:1.2rem;font-weight:800;letter-spacing:-.3px;}
+  .cat-name.ai{color:var(--ai);}
+  .cat-name.web{color:var(--web);}
+  .cat-name.data{color:var(--data);}
+  .cat-name.acad{color:var(--acad);}
+  .cat-count{font-size:.76rem;font-weight:600;color:var(--muted);margin-top:2px;letter-spacing:.5px;}
+  .divider{height:1px;margin-bottom:32px;}
+  .divider.ai{background:linear-gradient(90deg,rgba(124,58,237,0.4),transparent);}
+  .divider.web{background:linear-gradient(90deg,rgba(8,145,178,0.4),transparent);}
+  .divider.data{background:linear-gradient(90deg,rgba(5,150,105,0.4),transparent);}
+  .divider.acad{background:linear-gradient(90deg,rgba(217,119,6,0.4),transparent);}
+  .pcat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+  .pcard{background:var(--bg2);border-radius:16px;padding:0;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--border);transition:transform .22s,box-shadow .22s;}
+  .pcard:hover{transform:translateY(-5px);}
+  .pcard.ai:hover{box-shadow:0 12px 40px rgba(124,58,237,0.18);}
+  .pcard.web:hover{box-shadow:0 12px 40px rgba(8,145,178,0.18);}
+  .pcard.data:hover{box-shadow:0 12px 40px rgba(5,150,105,0.18);}
+  .pcard.acad:hover{box-shadow:0 12px 40px rgba(217,119,6,0.18);}
+  .pcard::before{content:'';display:block;height:3px;width:100%;}
+  .pcard.ai::before{background:linear-gradient(90deg,var(--ai),rgba(124,58,237,0));}
+  .pcard.web::before{background:linear-gradient(90deg,var(--web),rgba(8,145,178,0));}
+  .pcard.data::before{background:linear-gradient(90deg,var(--data),rgba(5,150,105,0));}
+  .pcard.acad::before{background:linear-gradient(90deg,var(--acad),rgba(217,119,6,0));}
+  .pcard-top{padding:24px 24px 20px;flex:1;display:flex;flex-direction:column;gap:14px;}
+  .pcard-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .pcard-badge{font-size:.66rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:50px;}
+  .pcard-badge.ai{background:var(--ai2);color:var(--ai);border:1px solid rgba(124,58,237,0.3);}
+  .pcard-badge.web{background:var(--web2);color:var(--web);border:1px solid rgba(8,145,178,0.3);}
+  .pcard-badge.data{background:var(--data2);color:var(--data);border:1px solid rgba(5,150,105,0.3);}
+  .pcard-badge.acad{background:var(--acad2);color:var(--acad);border:1px solid rgba(217,119,6,0.3);}
+  .pcard-date{font-size:.72rem;color:var(--muted);font-weight:500;}
+  .pcard-title{font-size:1rem;font-weight:800;line-height:1.35;color:var(--text);}
+  .pcard-desc{font-size:.84rem;color:#9999bb;line-height:1.7;flex:1;}
+  .pcard-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .pchip{font-size:.7rem;padding:3px 10px;border-radius:4px;font-weight:500;}
+  .pchip.ai{background:rgba(124,58,237,0.1);color:#a78bfa;border:1px solid rgba(124,58,237,0.2);}
+  .pchip.web{background:rgba(8,145,178,0.1);color:#67e8f9;border:1px solid rgba(8,145,178,0.2);}
+  .pchip.data{background:rgba(5,150,105,0.1);color:#6ee7b7;border:1px solid rgba(5,150,105,0.2);}
+  .pchip.acad{background:rgba(217,119,6,0.1);color:#fcd34d;border:1px solid rgba(217,119,6,0.2);}
+  .pcard-footer{border-top:1px solid var(--border);padding:14px 24px;display:flex;gap:10px;flex-wrap:wrap;}
+  .plink{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:7px;transition:all .18s;}
+  .plink svg{width:13px;height:13px;flex-shrink:0;}
+  .plink.ai{background:rgba(124,58,237,0.12);color:var(--ai);border:1px solid rgba(124,58,237,0.25);}
+  .plink.ai:hover{background:rgba(124,58,237,0.25);}
+  .plink.web{background:rgba(8,145,178,0.12);color:var(--web);border:1px solid rgba(8,145,178,0.25);}
+  .plink.web:hover{background:rgba(8,145,178,0.25);}
+  .plink.data{background:rgba(5,150,105,0.12);color:var(--data);border:1px solid rgba(5,150,105,0.25);}
+  .plink.data:hover{background:rgba(5,150,105,0.25);}
+  .plink.acad{background:rgba(217,119,6,0.12);color:var(--acad);border:1px solid rgba(217,119,6,0.25);}
+  .plink.acad:hover{background:rgba(217,119,6,0.25);}
+  .pcard-no-link{padding:14px 24px;font-size:.76rem;color:var(--muted);font-style:italic;border-top:1px solid var(--border);}
+
+  /* SKILLS */
+  #skills{background:var(--bg2);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+  .skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:28px;transition:transform .2s,border-color .2s;}
+  .skill-card:hover{transform:translateY(-4px);border-color:rgba(79,142,255,0.4);}
+  .skill-card-title{font-size:.74rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{background:rgba(79,142,255,0.08);border:1px solid rgba(79,142,255,0.2);border-radius:6px;padding:5px 12px;font-size:.78rem;color:#c0c0dd;font-weight:500;}
+
+  /* ACHIEVEMENTS */
+  #achievements{background:var(--bg);}
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .ach-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
+  .ach-card:hover{transform:translateY(-4px);border-color:rgba(79,142,255,0.5);}
+  .ach-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue2),var(--blue));}
+  .ach-icon{font-size:1.6rem;margin-bottom:14px;}
+  .ach-title{font-size:1rem;font-weight:700;margin-bottom:8px;}
+  .ach-desc{font-size:.86rem;color:var(--muted);line-height:1.65;}
+  .ach-highlight{color:var(--blue);font-weight:700;}
+
+  /* EDUCATION */
+  #education{background:var(--bg2);}
+  .edu-top-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;}
+  .edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .edu-year{font-size:.74rem;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .edu-degree{font-size:1.05rem;font-weight:700;margin-bottom:4px;}
+  .edu-inst{font-size:.88rem;color:var(--muted);}
+  .edu-cgpa{display:inline-block;margin-top:12px;background:rgba(79,142,255,0.1);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.8rem;color:var(--blue);font-weight:600;}
+
+  /* CERT SECTION */
+  .cert-section-title{font-size:.74rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .cert-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,border-color .2s;}
+  .cert-card:hover{transform:translateY(-3px);border-color:rgba(79,142,255,0.35);}
+  .cert-card-top{display:flex;align-items:flex-start;gap:12px;}
+  .cert-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:5px;flex-shrink:0;}
+  .cert-name{font-size:.9rem;font-weight:700;line-height:1.3;}
+  .cert-org{font-size:.76rem;color:var(--muted);margin-top:3px;}
+  .cert-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .cert-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:50px;}
+  .cert-badge.gold{background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);}
+  .cert-badge.silver{background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3);}
+  .cert-badge.elite{background:rgba(79,142,255,0.12);color:var(--blue);border:1px solid var(--border);}
+  .cert-badge.grade{background:rgba(5,150,105,0.12);color:#6ee7b7;border:1px solid rgba(5,150,105,0.25);}
+  .cert-view-btn{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;color:var(--blue);background:rgba(79,142,255,0.08);border:1px solid var(--border);border-radius:6px;padding:5px 12px;cursor:pointer;transition:all .18s;align-self:flex-start;}
+  .cert-view-btn:hover{background:rgba(79,142,255,0.18);border-color:rgba(79,142,255,0.4);}
+
+  /* CONTACT */
+  #contact{background:var(--bg);}
+  .contact-inner{max-width:720px;}
+  .contact-desc{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+  .contact-cards{display:flex;flex-wrap:wrap;gap:16px;}
+  .contact-card{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 24px;text-decoration:none;color:var(--text);transition:all .2s;min-width:240px;}
+  .contact-card:hover{border-color:rgba(79,142,255,0.5);transform:translateY(-2px);}
+  .contact-card-icon{width:40px;height:40px;border-radius:10px;background:rgba(79,142,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;}
+  .contact-card-label{font-size:.7rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+  .contact-card-val{font-size:.88rem;font-weight:600;margin-top:2px;}
+
+  footer{text-align:center;padding:32px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;}
+
+  /* ══ EMAIL MODAL ══ */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+  .modal-overlay.open{display:flex;}
+  .email-modal{background:#0f0f1a;border:1px solid rgba(79,142,255,0.25);border-radius:20px;padding:36px;max-width:440px;width:100%;position:relative;animation:modalIn .25s ease;}
+  @keyframes modalIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
+  .modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.07);border:none;color:var(--muted);width:32px;height:32px;border-radius:8px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+  .modal-close:hover{background:rgba(255,255,255,0.14);}
+  .email-modal h3{font-size:1.2rem;font-weight:800;margin-bottom:6px;}
+  .email-modal p{font-size:.86rem;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+  .email-modal p strong{color:var(--blue);}
+  .email-options{display:flex;flex-direction:column;gap:12px;}
+  .email-opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;text-decoration:none;color:var(--text);border:1px solid var(--border);background:var(--bg3);transition:all .2s;cursor:pointer;}
+  .email-opt:hover{border-color:rgba(79,142,255,0.4);transform:translateX(4px);background:#1a1a2e;}
+  .email-opt-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+  .email-opt-label{font-size:.82rem;font-weight:600;}
+  .email-opt-sub{font-size:.74rem;color:var(--muted);margin-top:2px;}
+
+  /* ══ CERT PREVIEW MODAL ══ */
+  .cert-modal{background:#0c0c1a;border:1px solid rgba(79,142,255,0.2);border-radius:20px;max-width:680px;width:100%;position:relative;animation:modalIn .25s ease;overflow:hidden;}
+  .cert-modal-header{padding:22px 26px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);}
+  .cert-modal-title{font-size:1rem;font-weight:800;line-height:1.3;}
+  .cert-modal-org{font-size:.8rem;color:var(--muted);margin-top:4px;}
+  .cert-preview-wrap{width:100%;min-height:300px;background:linear-gradient(135deg,#0c0c20,#111128);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .cert-preview-wrap::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(79,142,255,0.07) 0%,transparent 70%);top:-60px;right:-60px;}
+  .cert-preview-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);font-size:.84rem;}
+  .cert-spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .cert-preview-img{width:100%;max-height:480px;object-fit:contain;display:none;}
+  .cert-preview-error{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px 32px;text-align:center;position:relative;z-index:1;}
+  .cert-error-icon{width:64px;height:64px;border-radius:16px;background:rgba(79,142,255,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+  .cert-error-title{font-size:1rem;font-weight:700;color:var(--text);}
+  .cert-error-sub{font-size:.82rem;color:var(--muted);max-width:280px;line-height:1.6;}
+  .cert-error-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:var(--blue2);color:#fff;border-radius:9px;text-decoration:none;font-size:.84rem;font-weight:600;transition:all .2s;box-shadow:0 0 20px rgba(79,142,255,0.25);}
+  .cert-error-btn:hover{background:var(--blue);transform:translateY(-2px);}
+
+  @media(max-width:768px){
+    .about-grid,.edu-top-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    section,#projects{padding:80px 5vw;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ EMAIL MODAL ══ -->
+<div class="modal-overlay" id="emailModal">
+  <div class="email-modal">
+    <button class="modal-close" onclick="closeModal('emailModal')">✕</button>
+    <h3>📬 Get in Touch</h3>
+    <p>Choose your preferred email app to send a message to <strong>debashishparida87620@gmail.com</strong></p>
+    <div class="email-options">
+      <a class="email-opt" href="https://mail.google.com/mail/?view=cm&to=debashishparida87620@gmail.com&su=Hello%20Debashish" target="_blank">
+        <div class="email-opt-icon" style="background:rgba(234,67,53,0.15);">📧</div>
+        <div><div class="email-opt-label">Gmail</div><div class="email-opt-sub">Open in Gmail on the web</div></div>
+      </a>
+      <a class="email-opt" href="https://outlook.live.com/mail/0/deeplink/compose?to=debashishparida87620@gmail.com&subject=Hello%20Debashish" target="_blank">
+        <div class="email-opt-icon" style="background:rgba(0,120,212,0.15);">🔵</div>
+        <div><div class="email-opt-label">Outlook</div><div class="email-opt-sub">Open in Outlook on the web</div></div>
+      </a>
+      <a class="email-opt" href="https://compose.mail.yahoo.com/?to=debashishparida87620@gmail.com&subject=Hello%20Debashish" target="_blank">
+        <div class="email-opt-icon" style="background:rgba(99,0,175,0.15);">💜</div>
+        <div><div class="email-opt-label">Yahoo Mail</div><div class="email-opt-sub">Open in Yahoo Mail</div></div>
+      </a>
+      <a class="email-opt" href="mailto:debashishparida87620@gmail.com?subject=Hello%20Debashish">
+        <div class="email-opt-icon" style="background:rgba(79,142,255,0.15);">💻</div>
+        <div><div class="email-opt-label">Default Mail App</div><div class="email-opt-sub">Open with your system default</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CERT PREVIEW MODAL ══ -->
+<div class="modal-overlay" id="certModal">
+  <div class="cert-modal">
+    <div class="cert-modal-header">
+      <div>
+        <div class="cert-modal-title" id="certModalTitle"></div>
+        <div class="cert-modal-org" id="certModalOrg"></div>
+      </div>
+      <button class="modal-close" style="position:static;flex-shrink:0;" onclick="closeModal('certModal')">✕</button>
+    </div>
+    <div class="cert-preview-wrap">
+      <div class="cert-preview-loading" id="certLoading">
+        <div class="cert-spinner"></div>
+        <span>Loading preview...</span>
+      </div>
+      <img class="cert-preview-img" id="certModalImg" src="" alt="Certificate preview"
+        onload="document.getElementById('certLoading').style.display='none';this.style.display='block';"
+        onerror="document.getElementById('certLoading').style.display='none';showCertError();"/>
+      <div class="cert-preview-error" id="certError">
+        <div class="cert-error-icon">📜</div>
+        <div class="cert-error-title" id="certErrorTitle"></div>
+        <div class="cert-error-sub">Click below to view the full certificate on Google Drive</div>
+        <a class="cert-error-btn" id="certErrorLink" href="#" target="_blank">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open Certificate
+        </a>
+      </div>
+    </div>
+    <div class="cert-modal-footer" id="certFooter" style="display:none;">
+      <span>Preview via Google Drive</span>
+      <a class="open-tab-btn" id="certModalLink" href="#" target="_blank">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open Full View
+      </a>
+    </div>
+ 
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DP</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#ai">AI</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Impact</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- NAME -->
+<section id="top">
+  <div class="glow-bg"></div>
+  <div class="glow-bg2"></div>
+  <div class="tag"><span></span> Open to Opportunities</div>
+  <h1 class="name"><span>Debashish<br>Parida</span></h1>
+  <div class="title-line"><strong>Customer Success &amp; Operations Professional</strong></div>
+  <div class="subtitle-line">AI Enabled Workflows &amp; Automation &nbsp;·&nbsp; IC2 Specialist</div>
+  <div class="cta-row">
+    <button class="btn btn-primary" onclick="openModal('emailModal')">✉ Get in Touch</button>
+    <a class="btn btn-outline" href="https://linkedin.com/in/debashish-parida205" target="_blank">in LinkedIn</a>
+  </div>
+  <div class="meta-row">
+    <div class="meta-item">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Gurugram, Haryana, India
+    </div>
+    <div class="meta-item">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 909018 7247
+    </div>
+    <div class="meta-item">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Nearly 2 Years Experience
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <div class="sec-label">About Me</div>
+    <div class="sec-title">Where Ops Thinking Meets <span>AI Fluency</span></div>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      Customer Success and Operations professional with nearly two years managing full lifecycle operations for elite US visa categories (<strong style="color:var(--blue)">EB-1A, O-1A, EB-2-NIW</strong>) in a high-stakes regulatory environment with hands-on AI fluency.<br><br>
+      Promoted to <strong style="color:var(--blue)">IC2 Specialist within 18 months</strong> for independently developing deep visa domain expertise, building AI-assisted prompt systems, and designing SOPs that measurably improved team quality and consistency.<br><br>
+      Pairs structured operational thinking with daily hands-on use of LLMs to automate research, evaluate petition quality, and build scalable knowledge tools.
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">~2</div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-card"><div class="stat-num">$1.5M+</div><div class="stat-label">Portfolio Value Managed</div></div>
+      <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Clients Served Across Career</div></div>
+      <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">AI Prompt Systems Built</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-in">
+    <div class="sec-label">Experience</div>
+    <div class="sec-title">Professional <span>Journey</span></div>
+  </div>
+  <div class="timeline fade-in">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">April 2026 – June 2026</div>
+      <div class="tl-role">Client Operations Executive <span class="tl-badge">IC2 Specialist</span></div>
+      <div class="tl-company">Cache Labs · New Delhi</div>
+      <ul class="tl-list">
+        <li>Managed a portfolio of up to 100 client profiles with an estimated <strong style="color:var(--blue)">$1.4M–$1.6M portfolio value</strong> across multiple service plans.</li>
+        <li>Served as escalation authority for high-risk regulatory compliance cases, applying research-backed insights to guide root cause analysis and resolution.</li>
+        <li>Led retrospective analysis on operational breakdowns, translating findings into durable system-level fixes that reduced escalations and strengthened operational reliability.</li>
+        <li>Partnered with product and engineering teams to beta test AI tools including a scholarly paper writing helper, legal automation tool, and support chatbot.</li>
+        <li>Maintained long-term retention with high-value US-based clients through data-backed communication and proactive case management.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">September 2024 – March 2026</div>
+      <div class="tl-role">Customer Success Manager</div>
+      <div class="tl-company">Cache Labs · New Delhi</div>
+      <ul class="tl-list">
+        <li>Owned end-to-end customer success for a <strong style="color:var(--blue)">50+ account portfolio</strong> across EB-1A, O-1A, and EB-2-NIW: onboarding, evidence strategy, attorney handoff, and post-approval support.</li>
+        <li>Built client-facing documentation including post-approval Green Card guidance, I-485 readiness checklists, renewal timelines, and pre-attorney briefing materials.</li>
+        <li>Built <strong style="color:var(--blue)">6 AI-assisted prompt systems</strong> adopted across the team and authored 2 SOPs for the QA/QC function, including a module to grade CSM working efficiency.</li>
+        <li>Closed recurring knowledge gaps through self-driven research into USCIS adjudication standards, RFE patterns, and case law (Kazarian v. USCIS, Matter of Dhanasar).</li>
+        <li>Promoted to IC2 (Specialist) within 18 months for demonstrated systems thinking and measurable contributions to operational quality.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <div class="fade-in">
+    <div class="sec-label">AI &amp; Automation</div>
+    <div class="sec-title">Prompt Engineering <span>Projects</span></div>
+  </div>
+  <div class="ai-grid fade-in">
+    <div class="ai-card"><div class="ai-icon">⚖️</div><div class="ai-title">Petition Strength Evaluator</div><div class="ai-desc">Structured LLM prompt mapping client evidence against all USCIS criteria and flagging gaps for attorney review.</div></div>
+    <div class="ai-card"><div class="ai-icon">🧭</div><div class="ai-title">Niche &amp; Case Positioning System</div><div class="ai-desc">Converts resume and LinkedIn data into structured case positioning tied to visa criteria with a matched opportunity recommender.</div></div>
+    <div class="ai-card"><div class="ai-icon">📝</div><div class="ai-title">Adaptive Research Paper Writer</div><div class="ai-desc">Multi-step prompt producing publication-quality academic papers from a client's background. Adopted team-wide.</div></div>
+    <div class="ai-card"><div class="ai-icon">💰</div><div class="ai-title">Compensation Benchmarking Tool</div><div class="ai-desc">Cross-references BLS, H-1B LCA, and market salary sources to generate data-backed remuneration evidence.</div></div>
+    <div class="ai-card"><div class="ai-icon">✉️</div><div class="ai-title">Letter of Recommendation Checker</div><div class="ai-desc">Evaluates LOR drafts against USCIS standards and visa category-specific criteria before attorney review.</div></div>
+    <div class="ai-card"><div class="ai-icon">🏅</div><div class="ai-title">IEEE Senior Member Nomination Guide</div><div class="ai-desc">Structured nomination guide helping clients pursue IEEE Senior Member status as supporting visa petition evidence.</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-in">
+    <div class="sec-label">Projects</div>
+    <div class="sec-title">Things I've <span>Built</span></div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap ai">🤖</div>
+      <div><div class="cat-name ai">AI &amp; LLM</div><div class="cat-count">1 Project</div></div>
+    </div>
+    <div class="divider ai"></div>
+    <div class="pcat-grid">
+      <div class="pcard ai">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge ai">AI &amp; LLM</span><span class="pcard-date">Jul 2026 – Present</span></div>
+          <div class="pcard-title">LLM Systems &amp; Prompt Engineering Portfolio</div>
+          <div class="pcard-desc">Ongoing repository documenting six structured LLM prompt systems rebuilt as generalised, synthetic reference models covering evidence evaluation, profile positioning, adaptive research, document quality checking, niche mapping, and efficiency scoring.</div>
+          <div class="pcard-chips"><span class="pchip ai">ChatGPT</span><span class="pchip ai">Claude</span><span class="pchip ai">Prompt Engineering</span><span class="pchip ai">LLM Workflow Design</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink ai" href="https://github.com/Debashish-Parida/llm-systems-prompt-engineering-portfolio" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap web">💻</div>
+      <div><div class="cat-name web">Web Development</div><div class="cat-count">3 Projects</div></div>
+    </div>
+    <div class="divider web"></div>
+    <div class="pcat-grid">
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Dec 2023 – Jan 2024</span></div>
+          <div class="pcard-title">E-Commerce Website (Maven Web Project)</div>
+          <div class="pcard-desc">Full-stack e-commerce platform interlinking admin, merchant, product, customer, cart, and item management via Hibernate relationships with separate role-specific interfaces and full CRUD operations.</div>
+          <div class="pcard-chips"><span class="pchip web">Java</span><span class="pchip web">J2EE</span><span class="pchip web">JSP</span><span class="pchip web">Servlets</span><span class="pchip web">Hibernate</span><span class="pchip web">Spring IOC/MVC</span><span class="pchip web">Lombok</span><span class="pchip web">JDBC</span><span class="pchip web">MySQL</span><span class="pchip web">MySQL Workbench</span><span class="pchip web">HTML/CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/shopping_cart.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Oct 2023</span></div>
+          <div class="pcard-title">Hospital Management System (Maven Web Project)</div>
+          <div class="pcard-desc">Integrated platform for admins, doctors, and patients to manage hospital appointments with real-time data synchronisation across all three user roles via separate interfaces.</div>
+          <div class="pcard-chips"><span class="pchip web">Java</span><span class="pchip web">J2EE</span><span class="pchip web">JSP</span><span class="pchip web">Servlets</span><span class="pchip web">Hibernate</span><span class="pchip web">JDBC</span><span class="pchip web">MySQL</span><span class="pchip web">MySQL Workbench</span><span class="pchip web">HTML/CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/hospital_Management.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Frontend Spotify Clone</div>
+          <div class="pcard-desc">Visually faithful replica of the Spotify web application built to sharpen frontend skills and deepen understanding of UI/UX design using pure HTML and CSS.</div>
+          <div class="pcard-chips"><span class="pchip web">HTML</span><span class="pchip web">CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/SPOTIFY-CLONE.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap data">📊</div>
+      <div><div class="cat-name data">Data &amp; Analytics</div><div class="cat-count">3 Projects</div></div>
+    </div>
+    <div class="divider data"></div>
+    <div class="pcat-grid">
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Interactive Customer Dashboard</div>
+          <div class="pcard-desc">Looker Studio dashboard visualising sales, profits, financial data, transport modes, and sub-category breakdowns through pie charts, bar graphs, maps, and widgets with hover interactions.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Looker Studio</span><span class="pchip data">Data Visualisation</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink data" href="https://lookerstudio.google.com/reporting/4ee30515-15d1-46e8-90e7-20d75fa720b2/page/u7npD" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Dashboard
+          </a>
+        </div>
+      </div>
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Interactive Walmart Sales Dashboard</div>
+          <div class="pcard-desc">Looker Studio dashboard presenting Walmart sales, profits, and financial data across regions using charts, maps, and widgets with intuitive hover-based exploration.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Looker Studio</span><span class="pchip data">Sales Analytics</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink data" href="https://lookerstudio.google.com/reporting/e546f5cc-877c-4b0b-ac1b-f7b7438b1a59/page/CErXD" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Dashboard
+          </a>
+        </div>
+      </div>
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Financial Income, Budgeting &amp; Forecasting Reports</div>
+          <div class="pcard-desc">Financial modelling using Google Sheets — analysed historical data to develop accurate revenue forecasts and addressed budget variances through detailed variance analysis.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Financial Modelling</span><span class="pchip data">Forecasting</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink data" href="https://drive.google.com/drive/folders/1k8r2Jmh6eY6Wl6Bi16a-eDXkuuIPB72x" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Reports
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap acad">🎓</div>
+      <div><div class="cat-name acad">Academic Research</div><div class="cat-count">2 Projects</div></div>
+    </div>
+    <div class="divider acad"></div>
+    <div class="pcat-grid">
+      <div class="pcard acad">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge acad">Academic</span><span class="pcard-date">Oct 2021 – Jun 2022</span></div>
+          <div class="pcard-title">FSO Performance Enhancement Using Optical Amplifiers</div>
+          <div class="pcard-desc">Research on Free Space Optical (FSO) communication exploring optical amplifiers to enhance signal performance under varying atmospheric conditions.</div>
+          <div class="pcard-chips"><span class="pchip acad">FSO Communication</span><span class="pchip acad">Optical Amplifiers</span><span class="pchip acad">ECE Research</span></div>
+        </div>
+        <div class="pcard-no-link">Research paper — no public link available</div>
+      </div>
+      <div class="pcard acad">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge acad">Academic</span><span class="pcard-date">Jan 2019 – Feb 2019</span></div>
+          <div class="pcard-title">Low Cost Fire Alarm Circuit</div>
+          <div class="pcard-desc">5V fire alarm buzzer system using a thermistor and LM358 Op-Amp that scans surrounding conditions for fire symptoms and triggers an audible alert.</div>
+          <div class="pcard-chips"><span class="pchip acad">LM358 Op-Amp</span><span class="pchip acad">Thermistor</span><span class="pchip acad">Circuit Design</span></div>
+        </div>
+        <div class="pcard-no-link">Hardware project — no public link available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-in">
+    <div class="sec-label">Skills &amp; Tools</div>
+    <div class="sec-title">What I <span>Work With</span></div>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-card"><div class="skill-card-title">Customer Success &amp; Operations</div><div class="chip-row"><span class="chip">Account Management</span><span class="chip">Customer Retention</span><span class="chip">Escalation Management</span><span class="chip">Onboarding</span><span class="chip">SOP Development</span><span class="chip">Audit Preparation</span><span class="chip">Root Cause Analysis</span><span class="chip">Cross-Functional Alignment</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">AI &amp; LLM Tools</div><div class="chip-row"><span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Prompt Engineering</span><span class="chip">LLM Workflow Design</span><span class="chip">AI Tool Evaluation</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Platforms &amp; Workflow</div><div class="chip-row"><span class="chip">ClickUp</span><span class="chip">GoHighLevel</span><span class="chip">Google Workspace</span><span class="chip">MS Office</span><span class="chip">Looker Studio</span><span class="chip">Case Tracking Systems</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Technical Background</div><div class="chip-row"><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">JDBC</span><span class="chip">JSP &amp; Servlets</span><span class="chip">Hibernate</span><span class="chip">Spring (IOC, MVC, Boot)</span><span class="chip">REST APIs</span><span class="chip">Eclipse IDE</span><span class="chip">VS Code</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Domain Expertise</div><div class="chip-row"><span class="chip">EB-1A</span><span class="chip">O-1A</span><span class="chip">EB-2-NIW</span><span class="chip">USCIS Compliance</span><span class="chip">RFE Response</span><span class="chip">NOID Handling</span><span class="chip">Evidence Positioning</span><span class="chip">Case Law Research</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Data &amp; Reporting</div><div class="chip-row"><span class="chip">Excel</span><span class="chip">Google Sheets</span><span class="chip">Looker Studio</span><span class="chip">PPT Slide Decks</span><span class="chip">Quality Metrics</span></div></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="fade-in">
+    <div class="sec-label">Key Impact</div>
+    <div class="sec-title">Achievements &amp; <span>Results</span></div>
+  </div>
+  <div class="ach-grid fade-in">
+    <div class="ach-card"><div class="ach-icon">💼</div><div class="ach-title">High-Value Portfolio Ownership</div><div class="ach-desc">Managed up to <span class="ach-highlight">100 client accounts</span> with an estimated <span class="ach-highlight">$1.4M–$1.6M portfolio value</span> across multiple service plans.</div></div>
+    <div class="ach-card"><div class="ach-icon">🤖</div><div class="ach-title">AI Systems Adopted Team-Wide</div><div class="ach-desc">Built <span class="ach-highlight">6 AI-assisted prompt systems</span> and <span class="ach-highlight">2 SOPs</span> for QA/QC adopted across the team covering petition evaluation, research writing, benchmarking, and efficiency scoring.</div></div>
+    <div class="ach-card"><div class="ach-icon">🔒</div><div class="ach-title">Near-Zero Escalations</div><div class="ach-desc">Reduced escalations to <span class="ach-highlight">near-zero</span> through preventive controls and structured retrospective analysis across complex regulatory scenarios.</div></div>
+    <div class="ach-card"><div class="ach-icon">🚀</div><div class="ach-title">Fast-Track Promotion</div><div class="ach-desc">Promoted from <span class="ach-highlight">IC1 to IC2 (Specialist)</span> within 18 months for visa domain expertise, AI fluency, and measurable contributions to team quality.</div></div>
+    <div class="ach-card"><div class="ach-icon">📚</div><div class="ach-title">Case Law Research Leadership</div><div class="ach-desc">Self-driven research into <span class="ach-highlight">Kazarian v. USCIS, Matter of Dhanasar</span> closed recurring knowledge gaps and reduced team reliance on escalation.</div></div>
+    <div class="ach-card"><div class="ach-icon">🏗️</div><div class="ach-title">Scalable Operational Infrastructure</div><div class="ach-desc">Built comprehensive frameworks: evidence positioning guides, membership strategy systems, I-485/Green Card readiness docs, and auditable case repositories.</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="fade-in">
+    <div class="sec-label">Education &amp; Certifications</div>
+    <div class="sec-title">Academic <span>Background</span></div>
+  </div>
+  <div class="edu-top-grid fade-in">
+    <div>
+      <div class="edu-card">
+        <div class="edu-year">2018 – 2022</div>
+        <div class="edu-degree">B.Tech – Electronics &amp; Communication Engineering</div>
+        <div class="edu-inst">GIET University, Odisha</div>
+        <div class="edu-cgpa">CGPA: 7.68</div>
+      </div>
+      <div style="margin-top:20px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px;">
+        <div style="font-size:.74rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Leadership</div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="font-size:1.4rem;">⚽</div>
+          <div>
+            <div style="font-weight:700;font-size:.95rem;">Captain, University Varsity Football Team</div>
+            <div style="color:var(--muted);font-size:.82rem;margin-top:4px;">2020–2022 · Leadership, teamwork &amp; strategic decision-making</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div class="edu-year">Professional Summary</div>
+      <div style="font-size:.88rem;color:#c0c0dd;line-height:1.75;margin-top:4px;">
+        Broad academic foundation spanning electronics engineering, full-stack Java development, financial modelling, and entrepreneurship — complemented by hands-on technical training and NPTEL certifications from IIT Madras.
+      </div>
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <div class="cert-section-title">Certifications &amp; Training</div>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Java Full-Stack Development</div>
+            <div class="cert-org">JSpiders, Bhubaneswar &nbsp;·&nbsp; Nov 2022 – Jan 2024</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge elite">Core Java · J2EE · Web Tech · Frameworks · SQL</span></div>
+        <button class="cert-view-btn" onclick="openCert('Java Full-Stack Development','JSpiders, Bhubaneswar','1RyIvQF1r96Y0GENDl2OJjrAIVOn1sUKO')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">The Joy of Computing Using Python</div>
+            <div class="cert-org">NPTEL · IIT Madras &nbsp;·&nbsp; Jul–Oct 2019</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge silver">🥈 Silver Medal</span><span class="cert-badge elite">Elite · 79%</span></div>
+        <button class="cert-view-btn" onclick="openCert('Joy of Computing Using Python','NPTEL · IIT Madras','1weQNF3QZh8xvtP31w3rr-48mVnk1Ic2U')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Entrepreneurship</div>
+            <div class="cert-org">NPTEL · IIT Madras &nbsp;·&nbsp; Jul–Oct 2021</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge silver">🥈 Silver Medal</span><span class="cert-badge elite">Elite · 76%</span></div>
+        <button class="cert-view-btn" onclick="openCert('Entrepreneurship','NPTEL · IIT Madras','1MVF0OXMLBZGUeus1fyFO1zDo6RB4LU_l')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Project Management for Managers</div>
+            <div class="cert-org">NPTEL · IIT Madras</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge elite">Attended · Online Course</span></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Financial Modelling Workshop</div>
+            <div class="cert-org">Jobaaj Learnings &nbsp;·&nbsp; Aug 2022</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge grade">Completion</span></div>
+        <button class="cert-view-btn" onclick="openCert('Financial Modelling Workshop','Jobaaj Learnings · Aug 2022','19M3_J88HHtI1QHvw6OTsmWLo_eoYWrWo')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Web Development Using PHP &amp; MySQL</div>
+            <div class="cert-org">MCAPL e-business catalyst &nbsp;·&nbsp; Jul 2019</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge gold">Grade O (≥85%)</span></div>
+        <button class="cert-view-btn" onclick="openCert('Web Development Using PHP & MySQL','MCAPL · Jul 2019','1CZuCE8_YkqHWM_-7SVyvo64rNdieG3OK')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Basics of Java and Python</div>
+            <div class="cert-org">GIET University · Science &amp; Tech Expo 2K19 &nbsp;·&nbsp; Feb 2019</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('Basics of Java and Python','GIET University · Science & Tech Expo 2K19','16pPRl8LKbmJU-YPXAw3dt9dntkG_q2qJ')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Applications of MATLAB in Daily Life</div>
+            <div class="cert-org">GIET University, Dept. of ECE</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('Applications of MATLAB in Daily Life','GIET University · Dept. of ECE','1IpKB4VpfK36CYn6R-lOFcMkAnUF9rwy7')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in">
+    <div class="sec-label">Contact</div>
+    <div class="sec-title">Let's <span>Connect</span></div>
+  </div>
+  <div class="contact-inner fade-in">
+    <div class="contact-desc">Open to new opportunities in customer success, operations, or roles at the intersection of AI and client-facing work. Feel free to reach out through any of the channels below.</div>
+    <div class="contact-cards">
+      <button onclick="openModal('emailModal')" class="contact-card" style="cursor:pointer;text-align:left;">
+        <div class="contact-card-icon">✉</div>
+        <div><div class="contact-card-label">Email</div><div class="contact-card-val">debashishparida87620@gmail.com</div></div>
+      </button>
+      <a href="tel:+919090187247" class="contact-card"><div class="contact-card-icon">📞</div><div><div class="contact-card-label">Phone</div><div class="contact-card-val">+91 909018 7247</div></div></a>
+      <a href="https://linkedin.com/in/debashish-parida205" target="_blank" class="contact-card"><div class="contact-card-icon" style="font-weight:800;font-size:.9rem;color:var(--blue);">in</div><div><div class="contact-card-label">LinkedIn</div><div class="contact-card-val">debashish-parida205</div></div></a>
+      <div class="contact-card" style="cursor:default;"><div class="contact-card-icon">📍</div><div><div class="contact-card-label">Location</div><div class="contact-card-val">Gurugram, Haryana, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Debashish Parida · Built with purpose.</footer>
+
+<script>
+  // Fade in
+  const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+  // Modal helpers
+  function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';if(id==='certModal'){document.getElementById('certModalImg').src='';document.getElementById('certModalImg').style.display='none';document.getElementById('certLoading').style.display='flex';}}
+
+  // Close on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(el=>{
+    el.addEventListener('click',e=>{if(e.target===el)closeModal(el.id);});
+  });
+
+  // Cert preview
+  function showCertError(){
+    document.getElementById('certError').style.display='flex';
+    document.getElementById('certFooter').style.display='none';
+  }
+  function openCert(title, org, fileId){
+    document.getElementById('certModalTitle').textContent = title;
+    document.getElementById('certModalOrg').textContent = org;
+    document.getElementById('certErrorTitle').textContent = title;
+    const thumbUrl = 'https://drive.google.com/thumbnail?id='+fileId+'&sz=w900';
+    const fullUrl  = 'https://drive.google.com/file/d/'+fileId+'/view?usp=sharing';
+    const img = document.getElementById('certModalImg');
+    img.style.display = 'none'; img.src = '';
+    document.getElementById('certLoading').style.display = 'flex';
+    document.getElementById('certError').style.display  = 'none';
+    document.getElementById('certFooter').style.display = 'flex';
+    document.getElementById('certErrorLink').href = fullUrl;
+    document.getElementById('certModalLink').href = fullUrl;
+    img.src = thumbUrl;
+    openModal('certModal');
+  }
+
+  // ESC key
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal('emailModal');closeModal('certModal');}});
+</script>
+</body>
+</html>
