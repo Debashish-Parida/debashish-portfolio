@@ -1,0 +1,5 @@
+@media(max-width:768px){
+    .about-grid,.edu-top-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    section,#projects{padding:80px 5vw;}
+  }

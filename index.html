@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Debashish Parida | Portfolio</title>
+
+<!-- Browser Tab Icon -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/DP.png">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+<!-- ══ EMAIL MODAL ══ -->
+<div class="modal-overlay" id="emailModal">
+  <div class="email-modal">
+    <button class="modal-close" onclick="closeModal('emailModal')">✕</button>
+    <h3>📬 Get in Touch</h3>
+    <p>Choose your preferred email app to send a message to <strong>debashishparida87620@gmail.com</strong></p>
+    <div class="email-options">
+      <a class="email-opt" href="mailto:debashishparida87620@gmail.com?subject=Hello%20Debashish" data-mail-client="gmail">
+        <div class="email-opt-icon" style="background:rgba(234,67,53,0.15);">📧</div>
+        <div><div class="email-opt-label">Gmail</div><div class="email-opt-sub">Open Gmail app or install it</div></div>
+      </a>
+      <a class="email-opt" href="mailto:debashishparida87620@gmail.com?subject=Hello%20Debashish" data-mail-client="outlook">
+        <div class="email-opt-icon" style="background:rgba(0,120,212,0.15);">🔵</div>
+        <div><div class="email-opt-label">Outlook</div><div class="email-opt-sub">Open Outlook app or install it</div></div>
+      </a>
+      <a class="email-opt" href="mailto:debashishparida87620@gmail.com?subject=Hello%20Debashish" data-mail-client="yahoo">
+        <div class="email-opt-icon" style="background:rgba(99,0,175,0.15);">💜</div>
+        <div><div class="email-opt-label">Yahoo Mail</div><div class="email-opt-sub">Open Yahoo Mail or install it</div></div>
+      </a>
+      <a class="email-opt" href="mailto:debashishparida87620@gmail.com?subject=Hello%20Debashish" data-mail-client="default">
+        <div class="email-opt-icon" style="background:rgba(79,142,255,0.15);">💻</div>
+        <div><div class="email-opt-label">Default Mail App</div><div class="email-opt-sub">Choose from installed mail apps</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CERT PREVIEW MODAL ══ -->
+<div class="modal-overlay" id="certModal">
+  <div class="cert-modal">
+    <div class="cert-modal-header">
+      <div>
+        <div class="cert-modal-title" id="certModalTitle"></div>
+        <div class="cert-modal-org" id="certModalOrg"></div>
+      </div>
+      <button class="modal-close" style="position:static;flex-shrink:0;" onclick="closeModal('certModal')">✕</button>
+    </div>
+    <div class="cert-preview-wrap">
+      <div class="cert-preview-loading" id="certLoading">
+        <div class="cert-spinner"></div>
+        <span>Loading preview...</span>
+      </div>
+      <img class="cert-preview-img" id="certModalImg" src="" alt="Certificate preview"
+        onload="document.getElementById('certLoading').style.display='none';this.style.display='block';"
+        onerror="document.getElementById('certLoading').style.display='none';showCertError();"/>
+      <div class="cert-preview-error" id="certError">
+        <div class="cert-error-icon">📜</div>
+        <div class="cert-error-title" id="certErrorTitle"></div>
+        <div class="cert-error-sub">Click below to view the full certificate on Google Drive</div>
+        <a class="cert-error-btn" id="certErrorLink" href="#" target="_blank">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open Certificate
+        </a>
+      </div>
+    </div>
+    <div class="cert-modal-footer" id="certFooter" style="display:none;">
+      <span>Preview via Google Drive</span>
+      <a class="open-tab-btn" id="certModalLink" href="#" target="_blank">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open Full View
+      </a>
+    </div>
+ 
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DP</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#ai">AI</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Impact</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- NAME -->
+<section id="top">
+  <div class="glow-bg"></div>
+  <div class="glow-bg2"></div>
+  <div class="tag"><span></span> Open to Opportunities</div>
+  <h1 class="name"><span>Debashish<br>Parida</span></h1>
+  <div class="title-line"><strong>Customer Success &amp; Operations Professional</strong></div>
+  <div class="subtitle-line">AI Enabled Workflows &amp; Automation &nbsp;·&nbsp; IC2 Specialist</div>
+  <div class="cta-row">
+    <button class="btn btn-primary" onclick="openModal('emailModal')">✉ Get in Touch</button>
+    <a class="btn btn-outline" href="https://linkedin.com/in/debashish-parida205" target="_blank">in LinkedIn</a>
+    <button class="btn btn-resume" type="button" onclick="openProtectedLink('resume')">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+      Resume
+    </button>
+  </div>
+  <div class="meta-row">
+    <div class="meta-item">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Gurugram, Haryana, India
+    </div>
+    <a class="meta-item meta-phone" href="tel:+919090187247" aria-label="Call Debashish Parida">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 909018 7247
+    </a>
+    <div class="meta-item">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Nearly 2 Years Experience
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <div class="sec-label">About Me</div>
+    <div class="sec-title">Where Ops Thinking Meets <span>AI Fluency</span></div>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      Customer Success and Operations professional with nearly two years managing full lifecycle operations for elite US visa categories (<strong style="color:var(--blue)">EB-1A, O-1A, EB-2-NIW</strong>) in a high-stakes regulatory environment with hands-on AI fluency.<br><br>
+      Promoted to <strong style="color:var(--blue)">IC2 Specialist within 18 months</strong> for independently developing deep visa domain expertise, building AI-assisted prompt systems, and designing SOPs that measurably improved team quality and consistency.<br><br>
+      Pairs structured operational thinking with daily hands-on use of LLMs to automate research, evaluate petition quality, and build scalable knowledge tools.
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">~2</div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-card"><div class="stat-num">$1.5M+</div><div class="stat-label">Portfolio Value Managed</div></div>
+      <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Clients Served Across Career</div></div>
+      <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">AI Prompt Systems Built</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-in">
+    <div class="sec-label">Experience</div>
+    <div class="sec-title">Professional <span>Journey</span></div>
+  </div>
+  <div class="timeline fade-in">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">April 2026 – June 2026</div>
+      <div class="tl-role">Client Operations Executive <span class="tl-badge">IC2 Specialist</span></div>
+      <div class="tl-company">Cache Labs · New Delhi</div>
+      <ul class="tl-list">
+        <li>Managed a portfolio of up to 100 client profiles with an estimated <strong style="color:var(--blue)">$1.4M–$1.6M portfolio value</strong> across multiple service plans.</li>
+        <li>Served as escalation authority for high-risk regulatory compliance cases, applying research-backed insights to guide root cause analysis and resolution.</li>
+        <li>Led retrospective analysis on operational breakdowns, translating findings into durable system-level fixes that reduced escalations and strengthened operational reliability.</li>
+        <li>Partnered with product and engineering teams to beta test AI tools including a scholarly paper writing helper, legal automation tool, and support chatbot.</li>
+        <li>Maintained long-term retention with high-value US-based clients through data-backed communication and proactive case management.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">September 2024 – March 2026</div>
+      <div class="tl-role">Customer Success Manager</div>
+      <div class="tl-company">Cache Labs · New Delhi</div>
+      <ul class="tl-list">
+        <li>Owned end-to-end customer success for a <strong style="color:var(--blue)">50+ account portfolio</strong> across EB-1A, O-1A, and EB-2-NIW: onboarding, evidence strategy, attorney handoff, and post-approval support.</li>
+        <li>Built client-facing documentation including post-approval Green Card guidance, I-485 readiness checklists, renewal timelines, and pre-attorney briefing materials.</li>
+        <li>Built <strong style="color:var(--blue)">6 AI-assisted prompt systems</strong> adopted across the team and authored 2 SOPs for the QA/QC function, including a module to grade CSM working efficiency.</li>
+        <li>Closed recurring knowledge gaps through self-driven research into USCIS adjudication standards, RFE patterns, and case law (Kazarian v. USCIS, Matter of Dhanasar).</li>
+        <li>Promoted to IC2 (Specialist) within 18 months for demonstrated systems thinking and measurable contributions to operational quality.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <div class="fade-in">
+    <div class="sec-label">AI &amp; Automation</div>
+    <div class="sec-title">Prompt Engineering <span>Projects</span></div>
+  </div>
+  <div class="ai-grid fade-in">
+    <div class="ai-card"><div class="ai-icon">⚖️</div><div class="ai-title">Petition Strength Evaluator</div><div class="ai-desc">Structured LLM prompt mapping client evidence against all USCIS criteria and flagging gaps for attorney review.</div></div>
+    <div class="ai-card"><div class="ai-icon">🧭</div><div class="ai-title">Niche &amp; Case Positioning System</div><div class="ai-desc">Converts resume and LinkedIn data into structured case positioning tied to visa criteria with a matched opportunity recommender.</div></div>
+    <div class="ai-card"><div class="ai-icon">📝</div><div class="ai-title">Adaptive Research Paper Writer</div><div class="ai-desc">Multi-step prompt producing publication-quality academic papers from a client's background. Adopted team-wide.</div></div>
+    <div class="ai-card"><div class="ai-icon">💰</div><div class="ai-title">Compensation Benchmarking Tool</div><div class="ai-desc">Cross-references BLS, H-1B LCA, and market salary sources to generate data-backed remuneration evidence.</div></div>
+    <div class="ai-card"><div class="ai-icon">✉️</div><div class="ai-title">Letter of Recommendation Checker</div><div class="ai-desc">Evaluates LOR drafts against USCIS standards and visa category-specific criteria before attorney review.</div></div>
+    <div class="ai-card"><div class="ai-icon">🏅</div><div class="ai-title">IEEE Senior Member Nomination Guide</div><div class="ai-desc">Structured nomination guide helping clients pursue IEEE Senior Member status as supporting visa petition evidence.</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-in">
+    <div class="sec-label">Projects</div>
+    <div class="sec-title">Things I've <span>Built</span></div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap ai">🤖</div>
+      <div><div class="cat-name ai">AI &amp; LLM</div><div class="cat-count">1 Project</div></div>
+    </div>
+    <div class="divider ai"></div>
+    <div class="pcat-grid">
+      <div class="pcard ai">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge ai">AI &amp; LLM</span><span class="pcard-date">Jul 2026 – Present</span></div>
+          <div class="pcard-title">LLM Systems &amp; Prompt Engineering Portfolio</div>
+          <div class="pcard-desc">Ongoing repository documenting six structured LLM prompt systems rebuilt as generalised, synthetic reference models covering evidence evaluation, profile positioning, adaptive research, document quality checking, niche mapping, and efficiency scoring.</div>
+          <div class="pcard-chips"><span class="pchip ai">ChatGPT</span><span class="pchip ai">Claude</span><span class="pchip ai">Prompt Engineering</span><span class="pchip ai">LLM Workflow Design</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink ai" href="https://github.com/Debashish-Parida/llm-systems-prompt-engineering-portfolio" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap web">💻</div>
+      <div><div class="cat-name web">Web Development</div><div class="cat-count">3 Projects</div></div>
+    </div>
+    <div class="divider web"></div>
+    <div class="pcat-grid">
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Dec 2023 – Jan 2024</span></div>
+          <div class="pcard-title">E-Commerce Website (Maven Web Project)</div>
+          <div class="pcard-desc">Full-stack e-commerce platform interlinking admin, merchant, product, customer, cart, and item management via Hibernate relationships with separate role-specific interfaces and full CRUD operations.</div>
+          <div class="pcard-chips"><span class="pchip web">Java</span><span class="pchip web">J2EE</span><span class="pchip web">JSP</span><span class="pchip web">Servlets</span><span class="pchip web">Hibernate</span><span class="pchip web">Spring IOC/MVC</span><span class="pchip web">Lombok</span><span class="pchip web">JDBC</span><span class="pchip web">MySQL</span><span class="pchip web">MySQL Workbench</span><span class="pchip web">HTML/CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/shopping_cart.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Oct 2023</span></div>
+          <div class="pcard-title">Hospital Management System (Maven Web Project)</div>
+          <div class="pcard-desc">Integrated platform for admins, doctors, and patients to manage hospital appointments with real-time data synchronisation across all three user roles via separate interfaces.</div>
+          <div class="pcard-chips"><span class="pchip web">Java</span><span class="pchip web">J2EE</span><span class="pchip web">JSP</span><span class="pchip web">Servlets</span><span class="pchip web">Hibernate</span><span class="pchip web">JDBC</span><span class="pchip web">MySQL</span><span class="pchip web">MySQL Workbench</span><span class="pchip web">HTML/CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/hospital_Management.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="pcard web">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge web">Web Dev</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Frontend Spotify Clone</div>
+          <div class="pcard-desc">Visually faithful replica of the Spotify web application built to sharpen frontend skills and deepen understanding of UI/UX design using pure HTML and CSS.</div>
+          <div class="pcard-chips"><span class="pchip web">HTML</span><span class="pchip web">CSS</span></div>
+        </div>
+        <div class="pcard-footer">
+          <a class="plink web" href="https://github.com/Debashish-Parida/SPOTIFY-CLONE.git" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap data">📊</div>
+      <div><div class="cat-name data">Data &amp; Analytics</div><div class="cat-count">3 Projects</div></div>
+    </div>
+    <div class="divider data"></div>
+    <div class="pcat-grid">
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Interactive Customer Dashboard</div>
+          <div class="pcard-desc">Looker Studio dashboard visualising sales, profits, financial data, transport modes, and sub-category breakdowns through pie charts, bar graphs, maps, and widgets with hover interactions.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Looker Studio</span><span class="pchip data">Data Visualisation</span></div>
+        </div>
+        <div class="pcard-footer">
+          <button class="plink data" type="button" onclick="openProtectedLink('customerDashboard')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Dashboard
+          </button>
+        </div>
+      </div>
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Interactive Walmart Sales Dashboard</div>
+          <div class="pcard-desc">Looker Studio dashboard presenting Walmart sales, profits, and financial data across regions using charts, maps, and widgets with intuitive hover-based exploration.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Looker Studio</span><span class="pchip data">Sales Analytics</span></div>
+        </div>
+        <div class="pcard-footer">
+          <button class="plink data" type="button" onclick="openProtectedLink('walmartDashboard')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Dashboard
+          </button>
+        </div>
+      </div>
+      <div class="pcard data">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge data">Data &amp; Analytics</span><span class="pcard-date">Apr 2024</span></div>
+          <div class="pcard-title">Financial Income, Budgeting &amp; Forecasting Reports</div>
+          <div class="pcard-desc">Financial modelling using Google Sheets — analysed historical data to develop accurate revenue forecasts and addressed budget variances through detailed variance analysis.</div>
+          <div class="pcard-chips"><span class="pchip data">Google Sheets</span><span class="pchip data">Financial Modelling</span><span class="pchip data">Forecasting</span></div>
+        </div>
+        <div class="pcard-footer">
+          <button class="plink data" type="button" onclick="openProtectedLink('financialReports')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Reports
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block fade-in">
+    <div class="cat-header">
+      <div class="cat-icon-wrap acad">🎓</div>
+      <div><div class="cat-name acad">Academic Research</div><div class="cat-count">2 Projects</div></div>
+    </div>
+    <div class="divider acad"></div>
+    <div class="pcat-grid">
+      <div class="pcard acad">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge acad">Academic</span><span class="pcard-date">Oct 2021 – Jun 2022</span></div>
+          <div class="pcard-title">FSO Performance Enhancement Using Optical Amplifiers</div>
+          <div class="pcard-desc">Research on Free Space Optical (FSO) communication exploring optical amplifiers to enhance signal performance under varying atmospheric conditions.</div>
+          <div class="pcard-chips"><span class="pchip acad">FSO Communication</span><span class="pchip acad">Optical Amplifiers</span><span class="pchip acad">ECE Research</span></div>
+        </div>
+        <div class="pcard-no-link">Research paper — no public link available</div>
+      </div>
+      <div class="pcard acad">
+        <div class="pcard-top">
+          <div class="pcard-meta"><span class="pcard-badge acad">Academic</span><span class="pcard-date">Jan 2019 – Feb 2019</span></div>
+          <div class="pcard-title">Low Cost Fire Alarm Circuit</div>
+          <div class="pcard-desc">5V fire alarm buzzer system using a thermistor and LM358 Op-Amp that scans surrounding conditions for fire symptoms and triggers an audible alert.</div>
+          <div class="pcard-chips"><span class="pchip acad">LM358 Op-Amp</span><span class="pchip acad">Thermistor</span><span class="pchip acad">Circuit Design</span></div>
+        </div>
+        <div class="pcard-no-link">Hardware project — no public link available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-in">
+    <div class="sec-label">Skills &amp; Tools</div>
+    <div class="sec-title">What I <span>Work With</span></div>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-card"><div class="skill-card-title">Customer Success &amp; Operations</div><div class="chip-row"><span class="chip">Account Management</span><span class="chip">Customer Retention</span><span class="chip">Escalation Management</span><span class="chip">Onboarding</span><span class="chip">SOP Development</span><span class="chip">Audit Preparation</span><span class="chip">Root Cause Analysis</span><span class="chip">Cross-Functional Alignment</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">AI &amp; LLM Tools</div><div class="chip-row"><span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Prompt Engineering</span><span class="chip">LLM Workflow Design</span><span class="chip">AI Tool Evaluation</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Platforms &amp; Workflow</div><div class="chip-row"><span class="chip">ClickUp</span><span class="chip">GoHighLevel</span><span class="chip">Google Workspace</span><span class="chip">MS Office</span><span class="chip">Looker Studio</span><span class="chip">Case Tracking Systems</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Technical Background</div><div class="chip-row"><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">JDBC</span><span class="chip">JSP &amp; Servlets</span><span class="chip">Hibernate</span><span class="chip">Spring (IOC, MVC, Boot)</span><span class="chip">REST APIs</span><span class="chip">Eclipse IDE</span><span class="chip">VS Code</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Domain Expertise</div><div class="chip-row"><span class="chip">EB-1A</span><span class="chip">O-1A</span><span class="chip">EB-2-NIW</span><span class="chip">USCIS Compliance</span><span class="chip">RFE Response</span><span class="chip">NOID Handling</span><span class="chip">Evidence Positioning</span><span class="chip">Case Law Research</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Data &amp; Reporting</div><div class="chip-row"><span class="chip">Excel</span><span class="chip">Google Sheets</span><span class="chip">Looker Studio</span><span class="chip">PPT Slide Decks</span><span class="chip">Quality Metrics</span></div></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="fade-in">
+    <div class="sec-label">Key Impact</div>
+    <div class="sec-title">Achievements &amp; <span>Results</span></div>
+  </div>
+  <div class="ach-grid fade-in">
+    <div class="ach-card"><div class="ach-icon">💼</div><div class="ach-title">High-Value Portfolio Ownership</div><div class="ach-desc">Managed up to <span class="ach-highlight">100 client accounts</span> with an estimated <span class="ach-highlight">$1.4M–$1.6M portfolio value</span> across multiple service plans.</div></div>
+    <div class="ach-card"><div class="ach-icon">🤖</div><div class="ach-title">AI Systems Adopted Team-Wide</div><div class="ach-desc">Built <span class="ach-highlight">6 AI-assisted prompt systems</span> and <span class="ach-highlight">2 SOPs</span> for QA/QC adopted across the team covering petition evaluation, research writing, benchmarking, and efficiency scoring.</div></div>
+    <div class="ach-card"><div class="ach-icon">🔒</div><div class="ach-title">Near-Zero Escalations</div><div class="ach-desc">Reduced escalations to <span class="ach-highlight">near-zero</span> through preventive controls and structured retrospective analysis across complex regulatory scenarios.</div></div>
+    <div class="ach-card"><div class="ach-icon">🚀</div><div class="ach-title">Fast-Track Promotion</div><div class="ach-desc">Promoted from <span class="ach-highlight">IC1 to IC2 (Specialist)</span> within 18 months for visa domain expertise, AI fluency, and measurable contributions to team quality.</div></div>
+    <div class="ach-card"><div class="ach-icon">📚</div><div class="ach-title">Case Law Research Leadership</div><div class="ach-desc">Self-driven research into <span class="ach-highlight">Kazarian v. USCIS, Matter of Dhanasar</span> closed recurring knowledge gaps and reduced team reliance on escalation.</div></div>
+    <div class="ach-card"><div class="ach-icon">🏗️</div><div class="ach-title">Scalable Operational Infrastructure</div><div class="ach-desc">Built comprehensive frameworks: evidence positioning guides, membership strategy systems, I-485/Green Card readiness docs, and auditable case repositories.</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="fade-in">
+    <div class="sec-label">Education &amp; Certifications</div>
+    <div class="sec-title">Academic <span>Background</span></div>
+  </div>
+  <div class="edu-top-grid fade-in">
+    <div>
+      <div class="edu-card">
+        <div class="edu-year">2018 – 2022</div>
+        <div class="edu-degree">B.Tech – Electronics &amp; Communication Engineering</div>
+        <div class="edu-inst">GIET University, Odisha</div>
+        <div class="edu-cgpa">CGPA: 7.68</div>
+      </div>
+      <div style="margin-top:20px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px;">
+        <div style="font-size:.74rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Leadership</div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="font-size:1.4rem;">⚽</div>
+          <div>
+            <div style="font-weight:700;font-size:.95rem;">Captain, University Varsity Football Team</div>
+            <div style="color:var(--muted);font-size:.82rem;margin-top:4px;">2020–2022 · Leadership, teamwork &amp; strategic decision-making</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div class="edu-year">Professional Summary</div>
+      <div style="font-size:.88rem;color:#c0c0dd;line-height:1.75;margin-top:4px;">
+        Broad academic foundation spanning electronics engineering, full-stack Java development, financial modelling, and entrepreneurship — complemented by hands-on technical training and NPTEL certifications from IIT Madras.
+      </div>
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <div class="cert-section-title">Certifications &amp; Training</div>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Java Full-Stack Development</div>
+            <div class="cert-org">JSpiders, Bhubaneswar &nbsp;·&nbsp; Nov 2022 – Jan 2024</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge elite">Core Java · J2EE · Web Tech · Frameworks · SQL</span></div>
+        <button class="cert-view-btn" onclick="openCert('Java Full-Stack Development','JSpiders, Bhubaneswar','1RyIvQF1r96Y0GENDl2OJjrAIVOn1sUKO')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">The Joy of Computing Using Python</div>
+            <div class="cert-org">NPTEL · IIT Madras &nbsp;·&nbsp; Jul–Oct 2019</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge silver">🥈 Silver Medal</span><span class="cert-badge elite">Elite · 79%</span></div>
+        <button class="cert-view-btn" onclick="openCert('Joy of Computing Using Python','NPTEL · IIT Madras','1weQNF3QZh8xvtP31w3rr-48mVnk1Ic2U')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Entrepreneurship</div>
+            <div class="cert-org">NPTEL · IIT Madras &nbsp;·&nbsp; Jul–Oct 2021</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge silver">🥈 Silver Medal</span><span class="cert-badge elite">Elite · 76%</span></div>
+        <button class="cert-view-btn" onclick="openCert('Entrepreneurship','NPTEL · IIT Madras','1MVF0OXMLBZGUeus1fyFO1zDo6RB4LU_l')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Project Management for Managers</div>
+            <div class="cert-org">NPTEL · IIT Madras</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge elite">Attended · Online Course</span></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Financial Modelling Workshop</div>
+            <div class="cert-org">Jobaaj Learnings &nbsp;·&nbsp; Aug 2022</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge grade">Completion</span></div>
+        <button class="cert-view-btn" onclick="openCert('Financial Modelling Workshop','Jobaaj Learnings · Aug 2022','19M3_J88HHtI1QHvw6OTsmWLo_eoYWrWo')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Web Development Using PHP &amp; MySQL</div>
+            <div class="cert-org">MCAPL e-business catalyst &nbsp;·&nbsp; Jul 2019</div>
+          </div>
+        </div>
+        <div class="cert-badges"><span class="cert-badge gold">Grade O (≥85%)</span></div>
+        <button class="cert-view-btn" onclick="openCert('Web Development Using PHP & MySQL','MCAPL · Jul 2019','1CZuCE8_YkqHWM_-7SVyvo64rNdieG3OK')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Basics of Java and Python</div>
+            <div class="cert-org">GIET University · Science &amp; Tech Expo 2K19 &nbsp;·&nbsp; Feb 2019</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('Basics of Java and Python','GIET University · Science & Tech Expo 2K19','16pPRl8LKbmJU-YPXAw3dt9dntkG_q2qJ')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-top">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Applications of MATLAB in Daily Life</div>
+            <div class="cert-org">GIET University, Dept. of ECE</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('Applications of MATLAB in Daily Life','GIET University · Dept. of ECE','1IpKB4VpfK36CYn6R-lOFcMkAnUF9rwy7')">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Certificate
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in">
+    <div class="sec-label">Contact</div>
+    <div class="sec-title">Let's <span>Connect</span></div>
+  </div>
+  <div class="contact-inner fade-in">
+    <div class="contact-desc">Open to new opportunities in customer success, operations, or roles at the intersection of AI and client-facing work. Feel free to reach out through any of the channels below.</div>
+    <div class="contact-cards">
+      <button onclick="openModal('emailModal')" class="contact-card" style="cursor:pointer;text-align:left;">
+        <div class="contact-card-icon">✉</div>
+        <div><div class="contact-card-label">Email</div><div class="contact-card-val">debashishparida87620@gmail.com</div></div>
+      </button>
+      <a href="tel:+919090187247" class="contact-card"><div class="contact-card-icon">📞</div><div><div class="contact-card-label">Phone</div><div class="contact-card-val">+91 909018 7247</div></div></a>
+      <a href="https://linkedin.com/in/debashish-parida205" target="_blank" class="contact-card"><div class="contact-card-icon" style="font-weight:800;font-size:.9rem;color:var(--blue);">in</div><div><div class="contact-card-label">LinkedIn</div><div class="contact-card-val">debashish-parida205</div></div></a>
+      <div class="contact-card" style="cursor:default;"><div class="contact-card-icon">📍</div><div><div class="contact-card-label">Location</div><div class="contact-card-val">Gurugram, Haryana, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Debashish Parida · Built with purpose.</footer>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
